@@ -24,9 +24,9 @@
 //!     widgets::{Block, Borders},
 //! };
 //! use tui_term::widget::PseudoTerminal;
-//! use vt100::Parser;
+//! use vt100_ctt::Parser;
 //!
-//! let mut parser = vt100::Parser::new(24, 80, 0);
+//! let mut parser = vt100_ctt::Parser::new(24, 80, 0);
 //! let pseudo_term = PseudoTerminal::new(parser.screen())
 //!     .block(Block::default().title("Terminal").borders(Borders::ALL))
 //!     .style(
@@ -53,7 +53,7 @@
 #![warn(clippy::alloc_instead_of_core)]
 
 mod state;
-#[cfg(feature = "vt100")]
+#[cfg(feature = "vt100-ctt")]
 mod vt100_imp;
 pub mod widget;
 
@@ -61,5 +61,5 @@ pub mod widget;
 pub mod controller;
 
 /// Reexport of the vt100 crate to ensure correct version compatibility
-#[cfg(feature = "vt100")]
-pub use vt100;
+#[cfg(feature = "vt100-ctt")]
+pub use vt100_ctt as vt100;
